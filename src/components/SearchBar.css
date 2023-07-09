@@ -1,0 +1,13 @@
+.search {
+  position: relative;
+  margin-top: 10px;
+}
+
+.search-input {
+  padding: 10px;
+  padding-left: 30px;
+  background-image: url("../assets/SearchIcon.svg");
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: 20px 20px;
+}
