@@ -5,6 +5,7 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
+import Region from "./pages/Region/Region";
 import Search from "./pages/Search/Search";
 
 // const data = async () => {
@@ -27,6 +28,7 @@ function App() {
           <Route element={<Home />} path="/" />
           <Route element={<About />} path="/about/:id" />
           <Route element={<Search />} path="/search" />
+          <Route element={<Region />} path="/region" />
         </Routes>
       </BrowserRouter>
     </div>
