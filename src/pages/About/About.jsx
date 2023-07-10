@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import BackArrow from "../../assets/ArrowBack.svg";
 
 import "./About.css";
+import { useTheme } from "../../hooks/useTheme";
 
 export default function About() {
   const { id } = useParams();
@@ -19,17 +20,18 @@ export default function About() {
   const language = detail && Object.values(detail.languages);
   const border = detail && detail?.borders && Object.values(detail.borders);
   console.log(border);
+  const { mode } = useTheme();
 
   return (
     <>
-      <div className="back-home">
-        <Link to="/" className="home-link">
+      <div className={`back-home ${mode}`}>
+        <Link to="/" className={`home-link ${mode}`}>
           <img src={BackArrow} alt="retun to home page" />
           <p>Back</p>
         </Link>
       </div>
 
-      <div className="detail-page">
+      <div className={`detail-page ${mode}`}>
         {error && <p className="error">{error}</p>}
         {isPending && <p className="loading">Loading...</p>}
         {detail && (

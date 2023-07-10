@@ -1,12 +1,12 @@
 .back-home .home-link {
   max-width: 120px;
   height: 40px;
-  background: hsl(0, 0%, 100%);
+  background: hsl(0, 0%, 98%);
   box-shadow: 0 3px 5px rgba(20, 20, 20, 0.5);
   border-radius: 10%;
   font-size: 16px;
   font-weight: 600;
-  color: inherit;
+  color: hsl(200, 15%, 8%);
   display: flex;
   text-decoration: none;
   justify-content: center;
@@ -115,6 +115,20 @@
   text-align: center;
   background: hsl(0, 0%, 100%);
   box-shadow: 0 3px 5px rgba(20, 20, 20, 0.5);
+}
+.back-home .home-link.dark {
+  background: hsl(209, 23%, 22%);
+  color: hsl(0, 0%, 100%);
+}
+.dark {
+  color: white;
+}
+.back-home.dark img {
+  filter: invert(100%);
+}
+.detail-page.dark .border li,
+.detail-page.dark .border p {
+  background-color: hsl(209, 23%, 22%);
 }
 
 @media screen and (max-width: 767px) {

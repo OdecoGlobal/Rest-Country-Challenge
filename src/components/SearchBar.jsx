@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 // styles
 import "./SearchBar.css";
+import { useTheme } from "../hooks/useTheme";
 
 export default function SearchBar() {
   const [term, setTerm] = useState("");
@@ -21,13 +22,14 @@ export default function SearchBar() {
     console.log(setValue);
     navigate(`/region?w=${setValue}`);
   };
+  const { mode } = useTheme();
 
   return (
     <div className="filter-container">
       <form onSubmit={handleSubmit}>
         <div className="search">
           <input
-            className="search-input"
+            className={`search-input ${mode}`}
             type="text"
             placeholder="Search for country..."
             id="search"
@@ -39,6 +41,7 @@ export default function SearchBar() {
       <select
         name="region"
         value={selectedRegion}
+        className={`${mode}`}
         id="select-region"
         onChange={handleChange}
       >

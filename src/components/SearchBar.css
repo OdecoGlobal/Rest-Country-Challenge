@@ -32,6 +32,16 @@
   width: 10em;
   height: 2.5em;
 }
+.search-input.dark {
+  background-color: hsl(209, 23%, 22%);
+}
+.search-input.dark::placeholder {
+  color: hsl(0, 0%, 100%);
+}
+
+#select-region.dark {
+  background-color: hsl(209, 23%, 22%);
+}
 
 @media screen and (max-width: 767px) {
   .filter-container {
