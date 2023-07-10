@@ -1,70 +1,145 @@
-# Getting Started with Create React App
+# Frontend Mentor - REST Countries API with color theme switcher solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshot](#screenshot)
+  - [Links](#links)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+  - [Continued development](#continued-development)
+  - [Useful resources](#useful-resources)
+- [Author](#author)
+- [Acknowledgments](#acknowledgments)
 
-### `npm start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Creating this project has been amazing. Being commited to finishing it within 2 days isn't something I thought I could do. It wasn't easy but all thanks to God it ended in praise
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### The challenge
 
-### `npm test`
+Users should be able to:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode _(optional)_
 
-### `npm run build`
+### Screenshot
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+![](./screenshot.jpg)
+![](./screenshots/rest-1.png)
+![](./screenshots/rest-detail.png)
+![](./screenshots/rest-light.png)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Links
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- Solution URL: [Add solution URL here](https://your-solution-url.com)
+- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
-### `npm run eject`
+## My process
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Built with
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- JSX
+- CSS custom properties
+- Flexbox
+- CSS Grid
+- Desktop first workflow
+- [React](https://reactjs.org/) - JS library
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### What I learned
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+This is my first off tutorial react project. I learnt a lot in this project. I learnt how to fetch data in Rest api and how to use the Grid layout. This is also the first project in which I used grid to build. It was amazing and worth it.
 
-## Learn More
+Use
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```css
+.detail-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  row-gap: 40px;
+  max-width: 100vw;
+  margin: 30px;
+  font-size: 13px;
+  text-align: left;
+}
+.detail-container .details-link {
+  text-decoration: none;
+  color: inherit;
+}
+.detail-container p {
+  margin-left: 15px;
+}
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+```jsx
+// import React from "react";
+import { Link } from "react-router-dom";
+import "./DetailsList.css";
+import { useTheme } from "../hooks/useTheme";
 
-### Code Splitting
+export default function DetailsList({ details }) {
+  const { mode } = useTheme();
+  if (details.length === 0) {
+    return <div className="error">No country to load....</div>;
+  }
+  return (
+    <div className={`detail-container ${mode}`}>
+      {details.map((detail) => (
+        <Link
+          to={`/about/${detail.name.common.toLowerCase()}`}
+          key={detail.name.common}
+          className="details-link"
+        >
+          <div className={`countries ${mode}`}>
+            <div className="flag">
+              <img className="country__flag" src={detail.flags.png} />
+            </div>
+            <p className="name">{detail.name.common}</p>
+            <div className="data">
+              <p>
+                <span>Population: </span>
+                {detail.population}
+              </p>
+              <p>
+                <span>Region: </span>
+                {detail.region}
+              </p>
+              <p>
+                <span>Capital: </span>
+                {detail.capital}
+              </p>
+            </div>
+          </div>
+        </Link>
+      ))}
+    </div>
+  );
+}
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Continued development
 
-### Analyzing the Bundle Size
+I want to focus and improve my react skills and the use of flex and grid layout. I also want to improve on my css skills too
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Useful resources
 
-### Making a Progressive Web App
+- [Example resource 1](https://chat.openai.com) - This helped me when i got stucked in fetching data, I used to find a way to escape error while fetching data of countries that do not have border
+- [Example resource 2](https://www.w3schools.com) - This is an amazing website. I strongly recommend for anyone that wants to improve his or her CSs skills.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Author
 
-### Advanced Configuration
+- Frontend Mentor - [@OdecoGlobal](https://www.frontendmentor.io/profile/OdecoGlobal)
+- Twitter - [@M_Derah](https://www.twitter.com/M_Derah)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Acknowledgments
 
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Special shout out to my Tutors where I have learnt the skilss of HTML, CSS, JavaScript and React.
+Shout out to my Teachers, Shaun Pelling, Jonas Schmedtman, FreeCodeCamp.org. I can't forget YouTube channels where I gain Knowledge from, Travesy, Netninja, JavaScript Mastery, WedDev simplified to mention but a few. I am forever grateful
