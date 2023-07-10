@@ -1,8 +1,10 @@
 import { useTheme } from "../hooks/useTheme";
-import DarkIcon from "../assets/MoonIcon.svg";
 
 import { Link } from "react-router-dom";
 
+// Assets
+import LightIcon from "../assets/LightIcon.svg";
+import DarkIcon from "../assets/MoonIcon.svg";
 // styles
 import "./Navbar.css";
 
@@ -21,12 +23,12 @@ export default function Navbar() {
 
       <div className="mode-container" onClick={toggleMode}>
         <img
-          src={DarkIcon}
+          src={mode === "dark" ? LightIcon : DarkIcon}
           alt="dark/light toggle icon"
           style={{ filter: mode === "dark" ? "invert(100%)" : "invert(20%" }}
         />
 
-        <p>Dark Mode</p>
+        <p>{mode === "dark" ? "Light Mode" : "Dark Mode"}</p>
       </div>
     </div>
   );
